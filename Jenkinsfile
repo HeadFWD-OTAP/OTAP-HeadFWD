@@ -5,8 +5,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'f07ec6eb-8055-455e-b9f6-e47471efc3dd', url: 'https://github.com/NathanvanDalen/OTAP-HeadFWD.git']]])
-
+            steps {
+                echo 'SCM checkout...'
+            }
         }
         stage('Build') {
             steps {
