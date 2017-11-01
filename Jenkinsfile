@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
 
-pipeline {
-    agent any
+node {
 
     def buildHost = 'tcp://172.20.10.2:2376'
 
