@@ -3,16 +3,16 @@
 pipeline {
     agent any
 
-    def buildHost = 'tcp://172.20.10.2:2376'
-
     stages {
         stage('Checkout') {
             steps {
                 echo 'SCM checkout...'
+                checkout scm
             }
         }
         stage('Build') {
             steps {
+                def buildHost = 'tcp://172.20.10.2:2376'
                 docker.withServer(buildHost) {
                     sh 'eval $(docker-machine env ExternalHost)'
                     sh 'docker pull docker.elastic.co/elasticsearch/elasticsearch:5.3.6'
