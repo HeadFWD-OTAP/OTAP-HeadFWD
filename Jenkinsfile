@@ -28,7 +28,7 @@ node {
 //    }
 
     sh 'git rev-parse --short HEAD > .git/commit-id'
-    String commitId = readfile('.git/commit-id').trim()
+    String commitId = readFile('.git/commit-id').trim()
     def BUILD_TAG = "headwfd-otap-"+commitId.toLowerCase()
 
     stage('Build') {
