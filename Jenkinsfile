@@ -10,7 +10,8 @@ node {
         sh 'whoami'
     }
     stage('Check docker') {
-        sh 'which docker'
+        sh 'which docker'}
+    stage('Docker ps')
         sh 'docker'
         sh 'docker ps'
         sh 'docker ps -a'
