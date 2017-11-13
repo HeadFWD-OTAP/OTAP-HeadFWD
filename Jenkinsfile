@@ -18,7 +18,7 @@ node {
         sh 'docker ps -a'
     }
     stage('Compile'){
-        sh 'cd /gs-spring-boot/complete/'
+        sh 'cd /Spring-starter/complete/'
         sh 'mvn -B clean test-compile'
     }
     stage('UnitTest'){
