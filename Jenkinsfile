@@ -7,8 +7,11 @@ node {
         checkout scm
     }
     stage('Build') {
+        sh 'docker'
         sh 'whoami'
         sh 'which docker'
+        sh 'docker ps'
+        sh 'docker ps -a'
         sh 'eval $(docker-machine env ExternalHost)'
         def buildHost = 'tcp://172.20.10.2:2376'
             sh 'docker pull docker.elastic.co/elasticsearch/elasticsearch:5.3.6'
