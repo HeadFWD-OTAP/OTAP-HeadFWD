@@ -12,10 +12,10 @@ node {
     stage('Check docker') {
         sh 'which docker'
     }
-    stage('Docker ps') {
-        sh 'docker ps'
-        sh 'docker ps -a'
-    }
+//    stage('Docker ps') {
+//        sh 'docker ps'
+//        sh 'docker ps -a'
+//    }
     stage('Build') {
         sh 'eval $(docker-machine env ExternalHost)'
         def buildHost = 'tcp://172.20.10.2:2376'
