@@ -13,7 +13,6 @@ node {
         sh 'which docker'
     }
     stage('Docker ps') {
-        sh 'docker'
         sh 'docker ps'
         sh 'docker ps -a'
     }
