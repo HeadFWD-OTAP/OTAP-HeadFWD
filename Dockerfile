@@ -1,5 +1,5 @@
 FROM openjdk:8-jre-alpine
 
-COPY /gs-spring-boot/complete
+COPY /Spring-starter/complete/target
 
-RUN
+RUN java -jar

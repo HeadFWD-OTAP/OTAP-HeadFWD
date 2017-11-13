@@ -18,8 +18,9 @@ node {
         sh 'docker ps -a'
     }
     stage('Compile'){
-        sh 'cd /Spring-starter/complete/'
-        sh 'mvn -B clean test-compile'
+        dir('/Spring-starter/complete/'){
+            sh 'mvn -B clean test-compile'
+        }
     }
     stage('UnitTest'){
         sh 'mvn test'
