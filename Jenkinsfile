@@ -15,7 +15,6 @@ node {
     }
     stage('Docker ps') {
         sh 'docker ps'
-        sh 'docker ps -a'
     }
     stage('Compile') {
         dir('Spring-starter/complete/') {
@@ -43,7 +42,12 @@ node {
     }
     stage('IntegrationTest') {
         echo 'Testing...'
-        sh './pipeline-it-setup.sh'
+        try{
+            echo "BUILD_TAG=${BUILD_TAG}"
+            sh './pipeline-it-setup.sh'
+        } finally {
+            sh './pipeline-it-down.sh'
+        }
 
     }
     stage('Deploy') {

@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  Spring-starter:
+    image: ${BUILD_TAG}
+    ports:
+    - 8080:8083
