@@ -17,15 +17,15 @@ node {
 //        sh 'docker ps'
 //        sh 'docker ps -a'
 //    }
-    stage('Compile'){
-        sh 'mvn -B clean test-compile'
-    }
+//    stage('Compile'){
+//        sh 'mvn -B clean test-compile'
+//    }
     stage('UnitTest'){
         echo 'UnitTests...'
     }
-    stage('Package'){
-        sh 'mvn package -DskipTests -Dbuild.number=${BUILD_TAG}'
-    }
+//    stage('Package'){
+//        sh 'mvn package -DskipTests -Dbuild.number=${BUILD_TAG}'
+//    }
 
     sh 'git rev-parse --short HEAD > .git/commit-id'
     String commitId = readfile('.git/commit-id').trim()
