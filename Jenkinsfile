@@ -23,15 +23,19 @@ node {
         }
     }
     stage('UnitTest') {
-        sh 'mvn test'
+        dir('Spring-starter/complete/') {
+            sh 'mvn test'
+        }
     }
-//    stage('Package'){
-//        sh 'mvn package -DskipTests -Dbuild.number=${BUILD_TAG}'
-//    }
-
     sh 'git rev-parse --short HEAD > .git/commit-id'
     String commitId = readFile('.git/commit-id').trim()
     def BUILD_TAG = "headwfd-otap-" + commitId.toLowerCase()
+    stage('Package'){
+        dir('Spring-starter/complete/') {
+            sh "mvn package -DskipTests -Dbuild.number=${BUILD_TAG}"
+        }
+    }
+
 
     stage('Build') {
         def buildHost = 'tcp://172.20.10.2:2376'
