@@ -17,11 +17,12 @@ node {
         sh 'docker ps'
         sh 'docker ps -a'
     }
-    stage('Compile'){
-        sh 'cd Spring-starter/complete/'
-        sh 'mvn -B clean test-compile'
+    stage('Compile') {
+        dir('Spring-starter/complete/') {
+            sh 'mvn -B clean test-compile'
+        }
     }
-    stage('UnitTest'){
+    stage('UnitTest') {
         sh 'mvn test'
     }
 //    stage('Package'){
@@ -30,7 +31,7 @@ node {
 
     sh 'git rev-parse --short HEAD > .git/commit-id'
     String commitId = readFile('.git/commit-id').trim()
-    def BUILD_TAG = "headwfd-otap-"+commitId.toLowerCase()
+    def BUILD_TAG = "headwfd-otap-" + commitId.toLowerCase()
 
     stage('Build') {
         def buildHost = 'tcp://172.20.10.2:2376'
