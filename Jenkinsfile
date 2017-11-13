@@ -33,7 +33,7 @@ node {
 
     stage('Build') {
         def buildHost = 'tcp://172.20.10.2:2376'
-        sh "docker built -t ${BUILD_TAG} ."
+        sh "docker build -t ${BUILD_TAG} ."
     }
     stage('IntegrationTest') {
         echo 'Testing...'
