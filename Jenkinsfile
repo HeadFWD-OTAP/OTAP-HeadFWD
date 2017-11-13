@@ -13,15 +13,16 @@ node {
     stage('Check docker') {
         sh 'which docker'
     }
-//    stage('Docker ps') {
-//        sh 'docker ps'
-//        sh 'docker ps -a'
-//    }
-//    stage('Compile'){
-//        sh 'mvn -B clean test-compile'
-//    }
+    stage('Docker ps') {
+        sh 'docker ps'
+        sh 'docker ps -a'
+    }
+    stage('Compile'){
+        sh 'cd /gs-spring-boot/complete/'
+        sh 'mvn -B clean test-compile'
+    }
     stage('UnitTest'){
-        echo 'UnitTests...'
+        sh 'mvn test'
     }
 //    stage('Package'){
 //        sh 'mvn package -DskipTests -Dbuild.number=${BUILD_TAG}'
