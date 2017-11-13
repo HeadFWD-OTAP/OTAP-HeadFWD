@@ -7,6 +7,7 @@ node {
         checkout scm
     }
     stage('Build') {
+        sh 'whoami'
         sh 'which docker'
         sh 'eval $(docker-machine env ExternalHost)'
         def buildHost = 'tcp://172.20.10.2:2376'
