@@ -44,7 +44,8 @@ node {
     }
     stage('IntegrationTest') {
         echo 'Testing...'
-        withEnv(["BUILD_IMAGE_TAG=${BUILD_IMAGE_TAG}"]) {
+        withEnv(["BUILD_IMAGE_TAG=${BUILD_IMAGE_TAG}",
+                 "TARGET_ENV=local"]) {
             try {
                 echo "IMAGE_BUILD_TAG=${BUILD_IMAGE_TAG}"
                 sh './pipeline-it-setup.sh'
