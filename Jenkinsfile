@@ -44,11 +44,13 @@ node {
     }
     stage('IntegrationTest') {
         echo 'Testing...'
-        try {
-            echo "IMAGE_BUILD_TAG=${BUILD_TAG}"
-            sh './pipeline-it-setup.sh'
-        } finally {
-            sh './pipeline-it-down.sh'
+        withEnv(["BUILD_IMAGE_TAG=${BUILD_IMAGE_TAG}"]) {
+            try {
+                echo "IMAGE_BUILD_TAG=${BUILD_IMAGE_TAG}"
+                sh './pipeline-it-setup.sh'
+            } finally {
+                sh './pipeline-it-down.sh'
+            }
         }
 
     }
