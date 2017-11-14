@@ -7,7 +7,7 @@ services:
     netorks:
       - default
     ports:
-      - "8080:8083"
+      - "8083:8083"
     environment:
       SPRING_PROFILES_ACTIVE: ${TARGET_ENV}
 
