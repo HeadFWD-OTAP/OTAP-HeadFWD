@@ -1,16 +1,15 @@
 version: '3'
 
 services:
-  Spring-starter:
-    image: ${BRANCH_IMAGE_TAG}
+  app:
+#    image: ${BRANCH_IMAGE_TAG}
+    build:
+      context: .
     restart: unless-stopped
-    netorks:
+    networks:
       - default
     ports:
-      - "8083:8083"
-    environment:
-      SPRING_PROFILES_ACTIVE: ${TARGET_ENV}
-
+      - "8080:8080"
 
 networks:
   default:
