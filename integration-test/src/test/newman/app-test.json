@@ -13,12 +13,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://app:8083/",
+					"raw": "http://app:8080/",
 					"protocol": "http",
 					"host": [
 						"app"
 					],
-					"port": "8083",
+					"port": "8080",
 					"path": [
 						""
 					]
