@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
 
 node {
-//    def mvnHome = tool 'Maven 3.3.9'
 
     stage('Checkout') {
         echo 'SCM checkout...'
