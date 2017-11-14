@@ -9,8 +9,7 @@ docker-compose -f docker-compose-it.yml down -v
 docker-compose -f docker-compose-it.yml build
 docker-compose -f docker-compose-it.yml up -d
 
-./pipeline-it-setup.sh
-
+sleep 10
 
 docker-compose -f docker-compose-it.yml run app_it
 #docker build -t ${IMAGE_BUILD_TAG} .
