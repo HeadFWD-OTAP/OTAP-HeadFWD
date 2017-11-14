@@ -28,21 +28,23 @@ node {
     }
     sh 'git rev-parse --short HEAD > .git/commit-id'
     String commitId = readFile('.git/commit-id').trim()
-    def BUILD_TAG = "headwfd-otap-" + commitId.toLowerCase()
-    stage('Package'){
+    def BUILD_IMAGE_TAG = "headwfd-otap-" + commitId.toLowerCase()
+    stage('Package') {
         dir('Spring-starter/complete/') {
-            sh "mvn package -DskipTests -Dbuild.number=${BUILD_TAG}"
+            sh "mvn package -DskipTests -Dbuild.number=${BUILD_IMAGE_TAG}"
         }
     }
 
 
     stage('Build') {
-        def buildHost = 'tcp://172.20.10.2:2376'
-        sh "docker build -t ${BUILD_TAG} ."
+        withEnv(["BUILD_TAG=${BUILD_IMAGE_TAG}"]) {
+            def buildHost = 'tcp://172.20.10.2:2376'
+            sh 'docker build -t ${BUILD_TAG} .'
+        }
     }
     stage('IntegrationTest') {
         echo 'Testing...'
-        try{
+        try {
             echo "IMAGE_BUILD_TAG=${BUILD_TAG}"
             sh './pipeline-it-setup.sh'
         } finally {

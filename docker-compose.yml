@@ -2,6 +2,20 @@ version: '3'
 
 services:
   Spring-starter:
-    image: ${BUILD_TAG}
+    image: ${BRANCH_IMAGE_TAG}
+    restart: unless-stopped
+    netorks:
+      - default
     ports:
-    - 8080:8083
+      - "8080:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: ${TARGET_ENV}
+
+  app_it:
+    build:
+      context: integration-test
+    command: run -r cli app-test.json
+
+networks:
+  default:
+    driver: bridge
