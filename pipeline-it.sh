@@ -7,7 +7,7 @@ source ./pipeline-it-exports.sh
 docker-compose -f docker-compose-it.yml down -v
 docker-compose -f docker-compose-it.yml pull
 docker-compose -f docker-compose-it.yml build
-sudo docker-compose -f docker-compose-it.yml up -d
+docker-compose -f docker-compose-it.yml up -d
 
 ./pipeline-it-setup.sh
 
