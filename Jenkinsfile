@@ -39,6 +39,7 @@ node {
     stage('Build') {
         withEnv(["BUILD_IMAGE_TAG=${BUILD_IMAGE_TAG}"]) {
             def buildHost = 'tcp://172.20.10.2:2376'
+            echo "$BUILD_IMAGE_TAG"
             sh "docker build -t ${BUILD_IMAGE_TAG} ."
         }
     }
