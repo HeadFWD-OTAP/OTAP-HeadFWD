@@ -12,5 +12,5 @@ docker-compose -f docker-compose-it.yml up -d
 ./pipeline-it-setup.sh
 
 
-docker-compose -f docker-compose-it.yml run app
+docker-compose -f docker-compose-it.yml run app_it
 #docker build -t ${IMAGE_BUILD_TAG} .
