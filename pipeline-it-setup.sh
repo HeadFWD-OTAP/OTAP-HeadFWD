@@ -4,4 +4,4 @@ set -ex
 
 #ADD stuff
 
-docker build -t ${IMAGE_BUILD_TAG} .
+#docker build -t ${IMAGE_BUILD_TAG} .
