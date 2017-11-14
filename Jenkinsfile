@@ -43,7 +43,7 @@ node {
     stage('IntegrationTest') {
         echo 'Testing...'
         try{
-            echo "BUILD_TAG=${BUILD_TAG}"
+            echo "IMAGE_BUILD_TAG=${BUILD_TAG}"
             sh './pipeline-it-setup.sh'
         } finally {
             sh './pipeline-it-down.sh'
