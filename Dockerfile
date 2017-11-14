@@ -1,6 +1,6 @@
 FROM openjdk:8-jre-alpine
 
-ADD /Spring-starter/complete/target/gs-boot-*.jar app-server.jar
+ADD Spring-starter/complete/target/gs-boot-*.jar app-server.jar
 
 ENTRYPOINT ["sh", "-c", "java -jar /app-server.jar"]
 
