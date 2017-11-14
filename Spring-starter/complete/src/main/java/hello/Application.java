@@ -20,11 +20,14 @@ public class Application {
         return args -> {
 
             System.out.println("Let's inspect the beans provided by Spring Boot:");
-
+            int count = 0;
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                System.out.println(beanName);
+                if (count < 20) {
+                    System.out.println(beanName);
+                    count++;
+                }
             }
 
         };
