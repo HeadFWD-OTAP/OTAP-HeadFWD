@@ -1,13 +1,30 @@
 {
 	"info": {
 		"name": "app-test",
-		"_postman_id": "69c6b476-3de9-b9f2-9dc6-f51df27a3019",
+		"_postman_id": "e832a4c0-68c8-69bb-2e54-8b6d78a1dd1f",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "getHello",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Greetings from Spring Boot!\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -24,6 +41,86 @@
 					]
 				},
 				"description": "Greetings from Spring Boot!"
+			},
+			"response": []
+		},
+		{
+			"name": "/health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"UP\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://app:8080/health",
+					"protocol": "http",
+					"host": [
+						"app"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/time",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"It is now exactly \");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://app:8080/time",
+					"protocol": "http",
+					"host": [
+						"app"
+					],
+					"port": "8080",
+					"path": [
+						"time"
+					]
+				},
+				"description": ""
 			},
 			"response": []
 		}

@@ -24,11 +24,12 @@ public class Application {
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                if (count < 20) {
+                if (count < 10) {
                     System.out.println(beanName);
-                    count++;
                 }
+                count++;
             }
+            System.out.println(String.format("And %s more",count-10));
 
         };
     }
