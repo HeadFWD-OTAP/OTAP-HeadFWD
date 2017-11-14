@@ -48,7 +48,7 @@ node {
                  "TARGET_ENV=local"]) {
             try {
                 echo "IMAGE_BUILD_TAG=${BUILD_IMAGE_TAG}"
-                sh './pipeline-it-setup.sh'
+                sh './pipeline-it.sh'
             } finally {
                 sh './pipeline-it-down.sh'
             }
