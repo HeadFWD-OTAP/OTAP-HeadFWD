@@ -13,10 +13,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://0.0.0.0:8083/",
+					"raw": "http://app:8083/",
 					"protocol": "http",
 					"host": [
-						"0.0.0.0"
+						"app"
 					],
 					"port": "8083",
 					"path": [
