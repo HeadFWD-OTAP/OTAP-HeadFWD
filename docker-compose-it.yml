@@ -6,6 +6,8 @@ services:
     build:
       context: .
     restart: unless-stopped
+    networks:
+      - default
     ports:
       - "8083"
     environment:
@@ -14,6 +16,8 @@ services:
   app_it:
     build:
       context: integration-test
+    networks:
+      - default
     command: run -r cli app-test.json
 
 networks:
