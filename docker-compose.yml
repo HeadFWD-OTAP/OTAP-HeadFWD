@@ -11,10 +11,6 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: ${TARGET_ENV}
 
-  app_it:
-    build:
-      context: integration-test
-    command: run -r cli app-test.json
 
 networks:
   default:
