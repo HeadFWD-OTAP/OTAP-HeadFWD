@@ -47,7 +47,7 @@ node {
         withEnv(["BUILD_IMAGE_TAG=${BUILD_IMAGE_TAG}",
                  "TARGET_ENV=local"]) {
             try {
-                echo "IMAGE_BUILD_TAG=${BUILD_IMAGE_TAG}"
+                sh "export IMAGE_BUILD_TAG=${BUILD_IMAGE_TAG}"
                 sh './pipeline-it.sh'
             } finally {
                 sh './pipeline-it-down.sh'
